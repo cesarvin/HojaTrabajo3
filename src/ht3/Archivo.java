@@ -10,14 +10,17 @@ import javax.swing.JOptionPane;
 
 public class Archivo {
 	
-	public static String Ruta() {
-		return System.getProperty("user.dir") + "\\NumerosRandom.txt";
+	public static String Ruta(Boolean ordered) {
+		if(!ordered)
+			return System.getProperty("user.dir") + "\\NumerosRandom.txt";
+		else 
+			return System.getProperty("user.dir") + "\\NumerosOrdenados.txt";
 	}
 	
 	public static void GenerarArchivoRandom() {
 		try {
 			
-			File archivo = new File(Ruta());
+			File archivo = new File(Ruta(false));
 			int dialogButton;
 			int dialogResult;
             
@@ -54,11 +57,11 @@ public class Archivo {
 	}
 	
 	
-	public static RandomList[] leer(int n) {
+	public static RandomList[] leer(int n, Boolean ordered) {
 		RandomList r[] =  new RandomList[n];
 		
 		try {
-			File archivo = new File(Ruta());
+			File archivo = new File(Ruta(ordered));
 			FileReader fr = new FileReader(archivo);
 			BufferedReader br = new BufferedReader(fr);
 			
@@ -90,7 +93,7 @@ public class Archivo {
 		
 		numeros = new RandomList[100];
 		
-		numeros = leer(100);
+		numeros = leer(100, false);
 		
 		Sorting.selectionSort(numeros);
 		
@@ -105,9 +108,25 @@ public class Archivo {
 		
 		numeros = new RandomList[100];
 		
-		numeros = leer(100);
+		numeros = leer(100, false);
 		
 		Sorting.insertionSort(numeros);
+		
+		for (RandomList rl : numeros)
+	         System.out.println (rl.getNumero());
+	}
+	
+	public static void ExecuteMergeSort() {
+		
+		System.out.println ("Merge Short");
+		
+		RandomList numeros[] = null;
+		
+		numeros = new RandomList[100];
+		
+		numeros = leer(100, false);
+		
+		Sorting.mergeSort(numeros);
 		
 		for (RandomList rl : numeros)
 	         System.out.println (rl.getNumero());

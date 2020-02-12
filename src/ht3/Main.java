@@ -69,5 +69,14 @@ public class Main {
 		});
 		btnNewButton_2.setBounds(29, 126, 142, 23);
 		frame.getContentPane().add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Merge Short");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Archivo.ExecuteMergeSort();
+			}
+		});
+		btnNewButton_3.setBounds(29, 160, 142, 23);
+		frame.getContentPane().add(btnNewButton_3);
 	}
 }

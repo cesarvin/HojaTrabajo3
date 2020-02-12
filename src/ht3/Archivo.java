@@ -146,5 +146,6 @@ public class Archivo {
 		
 		for (RandomList rl : numeros)
 	         System.out.println (rl.getNumero());
+		
 	}
 }

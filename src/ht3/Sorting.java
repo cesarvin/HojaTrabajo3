@@ -11,10 +11,6 @@ public class Sorting {
        int min;
        RandomList temp;
       
-       /*for (int i=0; i < list.length - 1; i++) {
-	 		System.out.println(list[i].getNumero());
-       }*/
-
        for (int index = 0; index < list.length-1; index++)
        {
     	    min = index;
@@ -28,10 +24,6 @@ public class Sorting {
             list[index] =  temp;
        }
   
-       /*System.out.println("ordenado:");
-       for (int i=0; i < list.length - 1; i++) {
-			System.out.println(list[i].getNumero());
-       }*/
     }
 
     //-----------------------------------------------------------------
@@ -120,5 +112,61 @@ public class Sorting {
         //copy remaining elements from both halves - each half will have already sorted elements
         System.arraycopy(first, iFirst, result, iMerged, first.length - iFirst);
         System.arraycopy(second, iSecond, result, iMerged, second.length - iSecond);
+    }
+    
+    
+    public static void quickSort(RandomList[]  Lista, int l, int h) 
+    {
+    	//check for empty or null array
+        if (Lista == null || Lista.length == 0){
+            return;
+        }
+         
+        if (l >= h){
+            return;
+        }
+ 
+        //Get the pivot element from the middle of the list
+        int m = l + (h - l) / 2;
+        int pivot = Lista[m].getNumero();
+ 
+        // make left < pivot and right > pivot
+        int i = l, j = h;
+        
+        while (i <= j) 
+        {
+            //Check until all values on left side array are lower than pivot
+            while (Lista[i].getNumero() < pivot) 
+            {
+                i++;
+            }
+            //Check until all values on left side array are greater than pivot
+            while (Lista[j].getNumero() > pivot) 
+            {
+                j--;
+            }
+            //Now compare values from both side of lists to see if they need swapping 
+            //After swapping move the iterator on both lists
+            if (i <= j) 
+            {
+                swap (Lista, i, j);
+                i++;
+                j--;
+            }
+        }
+        //Do same operation as above recursively to sort two sub arrays
+        if (l < j){
+            quickSort(Lista, l, j);
+        }
+        if (h > i){
+            quickSort(Lista, i, h);
+        }
+    }
+     
+    public static void swap (RandomList array[], int x, int y)
+    {
+    	RandomList temp = array[x];
+        array[x] = array[y];
+        array[y] = temp;
     }
 }

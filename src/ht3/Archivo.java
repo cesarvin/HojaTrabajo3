@@ -131,4 +131,20 @@ public class Archivo {
 		for (RandomList rl : numeros)
 	         System.out.println (rl.getNumero());
 	}
+	
+	public static void ExecuteQuickSort() {
+		
+		System.out.println ("Quick Short");
+		
+		RandomList numeros[] = null;
+		
+		numeros = new RandomList[100];
+		
+		numeros = leer(100, false);
+		
+		Sorting.quickSort(numeros, 0, numeros.length - 1);
+		
+		for (RandomList rl : numeros)
+	         System.out.println (rl.getNumero());
+	}
 }

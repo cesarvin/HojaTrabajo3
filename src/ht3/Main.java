@@ -78,5 +78,14 @@ public class Main {
 		});
 		btnNewButton_3.setBounds(29, 160, 142, 23);
 		frame.getContentPane().add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("Quick Short");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Archivo.ExecuteQuickSort();
+			}
+		});
+		btnNewButton_4.setBounds(29, 194, 142, 23);
+		frame.getContentPane().add(btnNewButton_4);
 	}
 }

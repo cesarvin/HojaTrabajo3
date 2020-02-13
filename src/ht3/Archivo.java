@@ -6,7 +6,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Random;
+
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class Archivo {
 	
@@ -48,9 +51,12 @@ public class Archivo {
             
             bw.close();
             
-            dialogButton = JOptionPane.OK_OPTION;
-			dialogResult = JOptionPane.showConfirmDialog (null, "Archivo creado con 3000 numeros aleatorios", null, dialogButton);
-            
+            String[] options = {"OK"};
+            JPanel panel = new JPanel();
+    		JLabel lbl = new JLabel("Archivo generado!");
+    		panel.add(lbl);
+    		JOptionPane.showOptionDialog(null, panel, "Aceptar", JOptionPane.NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options , options[0]);
+    		
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
@@ -111,9 +117,10 @@ public class Archivo {
 		return r;
 	} 	
 	
-	public static void ExecuteSelectionShort(int n) {
+	public static void ExecuteSelectionSort(int n) {
 		
 		RandomList numeros[] = null;
+		RandomList numerosOrdenados[] = null;
 		
 		numeros = new RandomList[n];
 		
@@ -121,16 +128,20 @@ public class Archivo {
 		
 		Sorting.selectionSort(numeros);
 		
-		for (RandomList rl : numeros)
-	         System.out.println (rl.getNumero());
-		
 		GenerarArchivoOrdenado(numeros);
+		
+		numerosOrdenados = leer(n, true);
+		
+		Sorting.selectionSort(numerosOrdenados);
+		
+		finaliza("Terminado Selection Sort");
 	}
 	
 	
 	public static void ExecuteInsertionSort(int n) {
 		
 		RandomList numeros[] = null;
+		RandomList numerosOrdenados[] = null;
 		
 		numeros = new RandomList[n];
 		
@@ -138,17 +149,19 @@ public class Archivo {
 		
 		Sorting.insertionSort(numeros);
 		
-		for (RandomList rl : numeros)
-	         System.out.println (rl.getNumero());
-		
 		GenerarArchivoOrdenado(numeros);
+		
+		numerosOrdenados = leer(n, true);
+		
+		Sorting.insertionSort(numerosOrdenados);
+		
+		finaliza("Terminado Insertion Sort");
 	}
 	
 	public static void ExecuteMergeSort(int n) {
 		
-		System.out.println ("Merge Short");
-		
 		RandomList numeros[] = null;
+		RandomList numerosOrdenados[] = null;
 		
 		numeros = new RandomList[n];
 		
@@ -156,27 +169,66 @@ public class Archivo {
 		
 		Sorting.mergeSort(numeros);
 		
-		for (RandomList rl : numeros)
-	         System.out.println (rl.getNumero());
-		
 		GenerarArchivoOrdenado(numeros);
+		
+		numerosOrdenados = leer(n, true);
+		
+		Sorting.mergeSort(numerosOrdenados);
+		
+		finaliza("Terminado Merge Sort");
+		
 	}
 	
 	public static void ExecuteQuickSort(int n) {
 		
-		System.out.println ("Quick Short");
+		RandomList numeros[] = null;
+		RandomList numerosOrdenados[] = null;
+		
+		numeros = new RandomList[n];
+		
+		numeros = leer(n, false);;
+		
+		Sorting.quickSort(numeros, 0, numeros.length - 1);
+		
+		GenerarArchivoOrdenado(numeros);
+		
+		numerosOrdenados = leer(n, true);
+		
+		Sorting.quickSort(numerosOrdenados, 0, numeros.length - 1);
+		
+		finaliza("Terminado Quick Sort");
+	}
+	
+	public static void ExecuteBubbleSort(int n) {
 		
 		RandomList numeros[] = null;
+		RandomList numerosOrdenados[] = null;
 		
 		numeros = new RandomList[n];
 		
 		numeros = leer(n, false);
 		
-		Sorting.quickSort(numeros, 0, numeros.length - 1);
-		
-		for (RandomList rl : numeros)
-	         System.out.println (rl.getNumero());
+		Sorting.bubbleSort(numeros);
 		
 		GenerarArchivoOrdenado(numeros);
+		
+		numerosOrdenados = leer(n, true);
+		
+		Sorting.bubbleSort(numerosOrdenados);
+		
+		finaliza("Terminado Bubble Sort");
+		
 	}
+	
+	
+	public static void finaliza(String msj) {
+		
+		String[] options = {"OK"};
+        JPanel panel = new JPanel();
+		JLabel lbl = new JLabel(msj);
+		panel.add(lbl);
+		JOptionPane.showOptionDialog(null, panel, "Aceptar", JOptionPane.NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options , options[0]);
+		
+	}
+	
 }

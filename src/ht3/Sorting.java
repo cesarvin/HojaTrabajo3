@@ -49,7 +49,7 @@ public class Sorting {
     }
     
     /*
-     * mergeShort
+     * mergeSort
      * basado en Merge Sort Java Example
      * del sitio: https://howtodoinjava.com/algorithm/merge-sort-java-example/
      * */
@@ -169,4 +169,30 @@ public class Sorting {
         array[x] = array[y];
         array[y] = temp;
     }
+    
+    public static void bubbleSort(RandomList array[]) 
+    {
+    	RandomList d;
+        int fromIndex=0, toIndex = array.length-1;
+        
+        for (int i = toIndex - 1; i > fromIndex; i--) 
+        {
+            boolean isSorted = true;
+            for (int j = fromIndex; j < i; j++) 
+            {
+                //If elements in wrong order then swap them
+                if (((RandomList) array[j]).compareTo(array[j + 1]) > 0) 
+                {
+                    isSorted = false;
+                    d = array[j + 1];
+                    array[j + 1] = array[j];
+                    array[j] = d;
+                }
+            }
+            //If no swapping then array is already sorted
+            if (isSorted)
+                break;
+        }
+    }
+
 }

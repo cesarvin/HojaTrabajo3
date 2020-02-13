@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 public class Main {
 
 	private JFrame frame;
+	private int numeros = 15;
 
 	/**
 	 * Launch the application.
@@ -55,7 +56,7 @@ public class Main {
 		JButton btnNewButton_1 = new JButton("Selection Short");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Archivo.ExecuteSelectionShort();
+				Archivo.ExecuteSelectionShort(numeros);
 			}
 		});
 		btnNewButton_1.setBounds(28, 92, 143, 23);
@@ -64,7 +65,7 @@ public class Main {
 		JButton btnNewButton_2 = new JButton("Insertion Short");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Archivo.ExecuteInsertionSort();
+				Archivo.ExecuteInsertionSort(numeros);
 			}
 		});
 		btnNewButton_2.setBounds(29, 126, 142, 23);
@@ -73,7 +74,7 @@ public class Main {
 		JButton btnNewButton_3 = new JButton("Merge Short");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Archivo.ExecuteMergeSort();
+				Archivo.ExecuteMergeSort(numeros);
 			}
 		});
 		btnNewButton_3.setBounds(29, 160, 142, 23);
@@ -82,7 +83,7 @@ public class Main {
 		JButton btnNewButton_4 = new JButton("Quick Short");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Archivo.ExecuteQuickSort();
+				Archivo.ExecuteQuickSort(numeros);
 			}
 		});
 		btnNewButton_4.setBounds(29, 194, 142, 23);

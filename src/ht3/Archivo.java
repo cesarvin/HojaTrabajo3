@@ -56,6 +56,30 @@ public class Archivo {
 		}
 	}
 	
+	public static void GenerarArchivoOrdenado(RandomList list[]) {
+		try {
+			
+			File archivo = new File(Ruta(true));
+			
+			if (archivo.exists()) {
+				archivo.delete();
+            }
+			
+			archivo.createNewFile();
+			
+            FileWriter fw = new FileWriter(archivo);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for (RandomList rl : list)
+            	bw.write(Integer.toString(rl.getNumero()) + "\n");
+            
+            bw.close();
+            
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+	}
+	
 	
 	public static RandomList[] leer(int n, Boolean ordered) {
 		RandomList r[] =  new RandomList[n];
@@ -87,65 +111,72 @@ public class Archivo {
 		return r;
 	} 	
 	
-	public static void ExecuteSelectionShort() {
+	public static void ExecuteSelectionShort(int n) {
 		
 		RandomList numeros[] = null;
 		
-		numeros = new RandomList[100];
+		numeros = new RandomList[n];
 		
-		numeros = leer(100, false);
+		numeros = leer(n, false);
 		
 		Sorting.selectionSort(numeros);
 		
 		for (RandomList rl : numeros)
 	         System.out.println (rl.getNumero());
+		
+		GenerarArchivoOrdenado(numeros);
 	}
 	
 	
-	public static void ExecuteInsertionSort() {
+	public static void ExecuteInsertionSort(int n) {
 		
 		RandomList numeros[] = null;
 		
-		numeros = new RandomList[100];
+		numeros = new RandomList[n];
 		
-		numeros = leer(100, false);
+		numeros = leer(n, false);
 		
 		Sorting.insertionSort(numeros);
 		
 		for (RandomList rl : numeros)
 	         System.out.println (rl.getNumero());
+		
+		GenerarArchivoOrdenado(numeros);
 	}
 	
-	public static void ExecuteMergeSort() {
+	public static void ExecuteMergeSort(int n) {
 		
 		System.out.println ("Merge Short");
 		
 		RandomList numeros[] = null;
 		
-		numeros = new RandomList[100];
+		numeros = new RandomList[n];
 		
-		numeros = leer(100, false);
+		numeros = leer(n, false);
 		
 		Sorting.mergeSort(numeros);
 		
 		for (RandomList rl : numeros)
 	         System.out.println (rl.getNumero());
+		
+		GenerarArchivoOrdenado(numeros);
 	}
 	
-	public static void ExecuteQuickSort() {
+	public static void ExecuteQuickSort(int n) {
 		
 		System.out.println ("Quick Short");
 		
 		RandomList numeros[] = null;
 		
-		numeros = new RandomList[100];
+		numeros = new RandomList[n];
 		
-		numeros = leer(100, false);
+		numeros = leer(n, false);
 		
 		Sorting.quickSort(numeros, 0, numeros.length - 1);
 		
 		for (RandomList rl : numeros)
 	         System.out.println (rl.getNumero());
 		
+		GenerarArchivoOrdenado(numeros);
 	}
 }

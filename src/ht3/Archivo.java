@@ -86,6 +86,30 @@ public class Archivo {
 		}
 	}
 	
+	public static void GenerarArchivoOrdenado(RandomList list[], String Nombre) {
+		try {
+			
+			File archivo = new File(System.getProperty("user.dir") + "\\" + Nombre + ".txt");
+			
+			if (archivo.exists()) {
+				archivo.delete();
+            }
+			
+			archivo.createNewFile();
+			
+            FileWriter fw = new FileWriter(archivo);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for (RandomList rl : list)
+            	bw.write(Integer.toString(rl.getNumero()) + "\n");
+            
+            bw.close();
+            
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+	}
+	
 	
 	public static RandomList[] leer(int n, Boolean ordered) {
 		RandomList r[] =  new RandomList[n];
@@ -130,9 +154,9 @@ public class Archivo {
 		
 		GenerarArchivoOrdenado(numeros);
 		
-		numerosOrdenados = leer(n, true);
+		//numerosOrdenados = leer(n, true);
 		
-		Sorting.selectionSort(numerosOrdenados);
+		//Sorting.selectionSort(numerosOrdenados);
 		
 		finaliza("Terminado Selection Sort");
 	}
@@ -151,9 +175,9 @@ public class Archivo {
 		
 		GenerarArchivoOrdenado(numeros);
 		
-		numerosOrdenados = leer(n, true);
+		//numerosOrdenados = leer(n, true);
 		
-		Sorting.insertionSort(numerosOrdenados);
+		//Sorting.insertionSort(numerosOrdenados);
 		
 		finaliza("Terminado Insertion Sort");
 	}
@@ -171,9 +195,9 @@ public class Archivo {
 		
 		GenerarArchivoOrdenado(numeros);
 		
-		numerosOrdenados = leer(n, true);
+		//numerosOrdenados = leer(n, true);
 		
-		Sorting.mergeSort(numerosOrdenados);
+		//Sorting.mergeSort(numerosOrdenados);
 		
 		finaliza("Terminado Merge Sort");
 		
@@ -192,9 +216,9 @@ public class Archivo {
 		
 		GenerarArchivoOrdenado(numeros);
 		
-		numerosOrdenados = leer(n, true);
+		//numerosOrdenados = leer(n, true);
 		
-		Sorting.quickSort(numerosOrdenados, 0, numeros.length - 1);
+		//Sorting.quickSort(numerosOrdenados, 0, numeros.length - 1);
 		
 		finaliza("Terminado Quick Sort");
 	}

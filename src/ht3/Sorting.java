@@ -3,7 +3,8 @@ package ht3;
 public class Sorting {
 	
 	//-----------------------------------------------------------------
-    //  Sorts the specified array of objects using the selection
+	// Basado en el archivo de ejemplo de la clase
+	//  Sorts the specified array of objects using the selection
     //  sort algorithm.
     //-----------------------------------------------------------------
     public static void selectionSort (RandomList[] list)
@@ -27,7 +28,8 @@ public class Sorting {
     }
 
     //-----------------------------------------------------------------
-    //  Sorts the specified array of objects using the insertion
+    // Basado en el archivo de ejemplo de la clase 
+    // Sorts the specified array of objects using the insertion
     //  sort algorithm.
     //-----------------------------------------------------------------
     public static void insertionSort (RandomList[] list)
@@ -114,7 +116,11 @@ public class Sorting {
         System.arraycopy(second, iSecond, result, iMerged, second.length - iSecond);
     }
     
-    
+    /*
+     * quickSort
+     * basado en Quick Sort Java Example
+     * del sitio: https://howtodoinjava.com/algorithm/quick-sort-java-example/
+     * */
     public static void quickSort(RandomList[]  Lista, int l, int h) 
     {
     	//check for empty or null array
@@ -170,6 +176,11 @@ public class Sorting {
         array[y] = temp;
     }
     
+    /*
+     * bubbleSort
+     * basado en Bubble Sort Java Example
+     * del sitio: https://howtodoinjava.com/algorithm/bubble-sort-java-example/
+     * */
     public static void bubbleSort(RandomList array[]) 
     {
     	RandomList d;

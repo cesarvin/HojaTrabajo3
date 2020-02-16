@@ -9,45 +9,45 @@ class JUnit {
 	@Test
 	public void ExecuteSelectionSort() {
 		
-		RandomList n[] =  {new RandomList (19),new RandomList (18),new RandomList (27),new RandomList (3), new RandomList (7)};
+		Number n[] =  {new Number (19),new Number (18),new Number (27),new Number (3), new Number (7)};
 		
 		Sorting.selectionSort(n);
-		Archivo.GenerarArchivoOrdenado(n,"TESTSelectionSort");
+		NumberList.CreateOrderedFile(n,"TEST_selectionSort");
 		
 	}
 	
 	@Test
 	public void ExecuteInsertionSort() {
 		
-		RandomList n[] =  {new RandomList (19),new RandomList (18),new RandomList (27),new RandomList (3), new RandomList (7)};
+		Number n[] =  {new Number (19),new Number (18),new Number (27),new Number (3), new Number (7)};
 		Sorting.insertionSort(n);
-		Archivo.GenerarArchivoOrdenado(n, "TESTInsertionSort");
+		NumberList.CreateOrderedFile(n,"TEST_InsertionSort");
 	}
 	
 	@Test
 	public void ExecuteMergeSort() {
 		
-		RandomList n[] =  {new RandomList (19),new RandomList (18),new RandomList (27),new RandomList (3), new RandomList (7)};
+		Number n[] =  {new Number (19),new Number (18),new Number (27),new Number (3), new Number (7)};
 		Sorting.mergeSort(n);
-		Archivo.GenerarArchivoOrdenado(n, "TESTMergeSort");
+		NumberList.CreateOrderedFile(n,"TEST_MergeSort");
 		
 	}
 	
 	@Test
 	public void ExecuteQuickSort() {
 		
-		RandomList n[] =  {new RandomList (19),new RandomList (18),new RandomList (27),new RandomList (3), new RandomList (7)};
+		Number n[] =  {new Number (19),new Number (18),new Number (27),new Number (3), new Number (7)};
 		Sorting.quickSort(n, 0, n.length - 1);
-		Archivo.GenerarArchivoOrdenado(n, "TESTQuickSort");
+		NumberList.CreateOrderedFile(n,"TEST_QuickSort");
 		
 	}
 
 	@Test
 	public static void ExecuteBubbleSort() {
 		
-		RandomList n[] =  {new RandomList (19),new RandomList (18),new RandomList (27),new RandomList (3), new RandomList (7)};
+		Number n[] =  {new Number (19),new Number (18),new Number (27),new Number (3), new Number (7)};
 		Sorting.bubbleSort(n);
-		Archivo.GenerarArchivoOrdenado(n, "TESTBubbleSort");
+		NumberList.CreateOrderedFile(n,"TEST_BubbleSort");
 		
 	}
 

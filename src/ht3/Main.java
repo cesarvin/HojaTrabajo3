@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 public class Main {
 
 	private JFrame frame;
-	private int numeros = 1500;
+	private int numeros = 1500, top = 0;
 	private JTextField textField;
 
 	/**
@@ -50,7 +50,7 @@ public class Main {
 		JButton btnNewButton = new JButton("Generar Enteros");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Archivo.GenerarArchivoRandom();
+				NumberList.CreateRandomFile();
 			}
 		});
 		btnNewButton.setBounds(29, 30, 142, 23);
@@ -59,8 +59,17 @@ public class Main {
 		JButton btnNewButton_1 = new JButton("Selection Sort");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				numeros = Integer.parseInt(textField.getText()) ;
-				Archivo.ExecuteSelectionSort(numeros);
+				
+				top = Integer.parseInt(textField.getText()) ;
+				
+				Number[] numbers = new Number[top];
+		        numbers = NumberList.ReadNumberList(top, "NumerosOrdenados");
+		        
+		        Sorting.selectionSort(numbers);
+		        
+		        NumberList.CreateOrderedFile(numbers,"selectionSort");
+		        
+		        NumberList.OrderedEnd("Proceso selection sort completo");
 			}
 		});
 		btnNewButton_1.setBounds(28, 92, 143, 23);
@@ -69,8 +78,16 @@ public class Main {
 		JButton btnNewButton_2 = new JButton("Insertion Sort");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				numeros = Integer.parseInt(textField.getText()) ;
-				Archivo.ExecuteInsertionSort(numeros);
+				top = Integer.parseInt(textField.getText()) ;
+				
+				Number[] numbers = new Number[top];
+		        numbers = NumberList.ReadNumberList(top, "NumerosOrdenados");
+		        
+		        Sorting.insertionSort(numbers);
+		        
+		        NumberList.CreateOrderedFile(numbers,"insertionSort");
+		        
+		        NumberList.OrderedEnd("Proceso insertion sort completo");
 			}
 		});
 		btnNewButton_2.setBounds(29, 126, 142, 23);
@@ -79,8 +96,16 @@ public class Main {
 		JButton btnNewButton_3 = new JButton("Merge Sort");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				numeros = Integer.parseInt(textField.getText()) ;
-				Archivo.ExecuteMergeSort(numeros);
+				top = Integer.parseInt(textField.getText()) ;
+				
+				Number[] numbers = new Number[top];
+		        numbers = NumberList.ReadNumberList(top, "NumerosOrdenados");
+		        
+		        Sorting.mergeSort(numbers);
+		        
+		        NumberList.CreateOrderedFile(numbers,"mergeSort");
+		        
+		        NumberList.OrderedEnd("Proceso merge sort completo");
 			}
 		});
 		btnNewButton_3.setBounds(29, 160, 142, 23);
@@ -89,8 +114,16 @@ public class Main {
 		JButton btnNewButton_4 = new JButton("Quick Sort");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				numeros = Integer.parseInt(textField.getText()) ;
-				Archivo.ExecuteQuickSort(numeros);
+				top = Integer.parseInt(textField.getText()) ;
+				
+				Number[] numbers = new Number[top];
+		        numbers = NumberList.ReadNumberList(top, "NumerosOrdenados");
+		        
+		        Sorting.quickSort(numbers, 0, numbers.length-1);
+		        
+		        NumberList.CreateOrderedFile(numbers,"quickSort");
+		        
+		        NumberList.OrderedEnd("Proceso quick sort completo");
 			}
 		});
 		btnNewButton_4.setBounds(29, 194, 142, 23);
@@ -108,8 +141,16 @@ public class Main {
 		JButton btnNewButton_5 = new JButton("Bubble Sort");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				numeros = Integer.parseInt(textField.getText()) ;
-				Archivo.ExecuteBubbleSort(numeros);
+				top = Integer.parseInt(textField.getText()) ;
+				
+				Number[] numbers = new Number[top];
+		        numbers = NumberList.ReadNumberList(top, "NumerosOrdenados");
+		        
+		        Sorting.bubbleSort(numbers);
+		        
+		        NumberList.CreateOrderedFile(numbers,"bubbleSort");
+		        
+		        NumberList.OrderedEnd("Proceso bubble sort completo");
 			}
 		});
 		btnNewButton_5.setBounds(29, 227, 142, 23);

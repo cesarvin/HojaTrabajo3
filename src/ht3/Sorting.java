@@ -2,16 +2,20 @@ package ht3;
 
 public class Sorting {
 	
+	//********************************************************************
+	//  Sorting.java       Author: Lewis/Loftus
+	//
+	//  Demonstrates the selection sort and insertion sort algorithms.
+	//********************************************************************
 	//-----------------------------------------------------------------
-	// Basado en el archivo de ejemplo de la clase
 	//  Sorts the specified array of objects using the selection
-    //  sort algorithm.
-    //-----------------------------------------------------------------
-    public static void selectionSort (RandomList[] list)
+	//  sort algorithm.
+	//-----------------------------------------------------------------
+    public static void selectionSort (Comparable[] list)
     {
        int min;
-       RandomList temp;
-      
+       Comparable temp;
+             
        for (int index = 0; index < list.length-1; index++)
        {
     	    min = index;
@@ -27,16 +31,20 @@ public class Sorting {
   
     }
 
-    //-----------------------------------------------------------------
-    // Basado en el archivo de ejemplo de la clase 
+	//********************************************************************
+	//  Sorting.java       Author: Lewis/Loftus
+	//
+	//  Demonstrates the selection sort and insertion sort algorithms.
+	//********************************************************************
+	//-----------------------------------------------------------------
     // Sorts the specified array of objects using the insertion
     //  sort algorithm.
     //-----------------------------------------------------------------
-    public static void insertionSort (RandomList[] list)
+    public static void insertionSort (Comparable[] list)
     {
     	for (int index = 1; index < list.length; index++)
     	{
-    		RandomList key = list[index];
+    		Comparable key = list[index];
     		int position = index;
 
     		//  Shift larger values to the right
@@ -55,7 +63,7 @@ public class Sorting {
      * basado en Merge Sort Java Example
      * del sitio: https://howtodoinjava.com/algorithm/merge-sort-java-example/
      * */
-    public static void mergeSort(RandomList[] list) 
+    public static void mergeSort(Comparable[] list) 
     {
         //If list is empty; no need to do anything
         if (list.length <= 1) {
@@ -63,8 +71,8 @@ public class Sorting {
         }
          
         //Split the array in half in two parts
-        RandomList[] first = new RandomList[list.length / 2];
-        RandomList[] second = new RandomList[list.length - first.length];
+        Comparable[] first = new Comparable[list.length / 2];
+        Comparable[] second = new Comparable[list.length - first.length];
         
         System.arraycopy(list, 0, first, 0, first.length);
         
@@ -84,7 +92,7 @@ public class Sorting {
      * basado en Merge Sort Java Example
      * del sitio: https://howtodoinjava.com/algorithm/merge-sort-java-example/
      * */
-    private static void merge(RandomList[] first, RandomList[] second, RandomList[] result) 
+    private static void merge(Comparable[] first, Comparable[] second, Comparable[] result) 
     {
         //Index Position in first array - starting with first element
         int iFirst = 0;
@@ -119,12 +127,12 @@ public class Sorting {
     /*
      * quickSort
      * basado en Quick Sort Java Example
-     * del sitio: https://howtodoinjava.com/algorithm/quick-sort-java-example/
+     * del sitio: https://howtodoinjava.com/algorithm/quicksort-java-example/
      * */
-    public static void quickSort(RandomList[]  Lista, int l, int h) 
+    public static void quickSort(Comparable[] list, int l, int h) 
     {
     	//check for empty or null array
-        if (Lista == null || Lista.length == 0){
+        if (list == null || list.length == 0){
             return;
         }
          
@@ -134,7 +142,7 @@ public class Sorting {
  
         //Get the pivot element from the middle of the list
         int m = l + (h - l) / 2;
-        int pivot = Lista[m].getNumero();
+        int pivot = ((Number)list[m]).getNumero();
  
         // make left < pivot and right > pivot
         int i = l, j = h;
@@ -142,12 +150,12 @@ public class Sorting {
         while (i <= j) 
         {
             //Check until all values on left side array are lower than pivot
-            while (Lista[i].getNumero() < pivot) 
+            while (((Number)list[i]).getNumero() < pivot) 
             {
                 i++;
             }
             //Check until all values on left side array are greater than pivot
-            while (Lista[j].getNumero() > pivot) 
+            while (((Number)list[j]).getNumero() > pivot) 
             {
                 j--;
             }
@@ -155,23 +163,23 @@ public class Sorting {
             //After swapping move the iterator on both lists
             if (i <= j) 
             {
-                swap (Lista, i, j);
+                swap (list, i, j);
                 i++;
                 j--;
             }
         }
         //Do same operation as above recursively to sort two sub arrays
         if (l < j){
-            quickSort(Lista, l, j);
+            quickSort(list, l, j);
         }
         if (h > i){
-            quickSort(Lista, i, h);
+            quickSort(list, i, h);
         }
     }
      
-    public static void swap (RandomList array[], int x, int y)
+    public static void swap (Comparable array[], int x, int y)
     {
-    	RandomList temp = array[x];
+    	Comparable temp = array[x];
         array[x] = array[y];
         array[y] = temp;
     }
@@ -181,10 +189,10 @@ public class Sorting {
      * basado en Bubble Sort Java Example
      * del sitio: https://howtodoinjava.com/algorithm/bubble-sort-java-example/
      * */
-    public static void bubbleSort(RandomList array[]) 
+    public static void bubbleSort(Comparable[] list) 
     {
-    	RandomList d;
-        int fromIndex=0, toIndex = array.length-1;
+    	Comparable d;
+        int fromIndex=0, toIndex = list.length;
         
         for (int i = toIndex - 1; i > fromIndex; i--) 
         {
@@ -192,12 +200,13 @@ public class Sorting {
             for (int j = fromIndex; j < i; j++) 
             {
                 //If elements in wrong order then swap them
-                if (((RandomList) array[j]).compareTo(array[j + 1]) > 0) 
+                //if (((RandomList) list[j]).compareTo(list[j + 1]) > 0)
+                if (((Number)list[j]).compareTo(list[j + 1]) > 0)
                 {
                     isSorted = false;
-                    d = array[j + 1];
-                    array[j + 1] = array[j];
-                    array[j] = d;
+                    d = list[j + 1];
+                    list[j + 1] = list[j];
+                    list[j] = d;
                 }
             }
             //If no swapping then array is already sorted
